@@ -8,7 +8,7 @@ main= Blueprint('main', __name__)
 def home():
 	return render_template('index.html')
 
-@main.route('/post', methods=['POST', 'GET'])
+@main.route('/post')
 def all_post():
 	page = request.args.get('page', 1, type=int)
 	posts = Post.query.order_by(Post.date_posted.desc()).paginate(page=page, per_page=5)
