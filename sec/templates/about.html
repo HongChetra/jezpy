@@ -1,0 +1,42 @@
+{% extends 'index.html' %}
+
+{% block content %}
+	 <section class="banner_area">
+            <div class="banner_inner d-flex align-items-center">
+            	<div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
+				<div class="container">
+					<div class="banner_content text-center">
+						<h2>About Us</h2>
+						<div class="page_link">
+							<a href="{{url_for('main.home')}}">Home</a>
+							<a href="{{url_for('main.about')}}">About Us</a>
+						</div>
+					</div>
+				</div>
+            </div>
+        </section>
+        <section class="about_area p_120">
+        	<div class="container">
+        		<div class="main_title">
+        			<h2>Goals to Achieve for more coders in Cambodia</h2>
+					<p>Cambodia still needs more coders who really can code. Cheer Cambodia, Kingdom of Wonder!</p>
+					<p>We are love to teach newbies to code. Recently we are teaching Python Code, and teach Python's popular frameworks.
+						These two popular frameworks are <a href="{{url_for('main.django')}}">Django</a> and <a href="{{url_for('main.flask')}}">Flask.</a>
+						 We hope to teach another languages in the future as well.</p>
+        		</div>
+        		
+				<br><br>
+
+				<div class="main_title">
+				<h2>Contact Us</h2>
+				<p>If you have any question about Python, Flask and Django, feel free to contact us through this email. We try our best to answer your questions</p>
+
+				<br>
+                            <div class="info_item">   
+                                <h6>===jezpython@gmail.com===</h6>                               
+							</div>
+				
+			</div>
+        	</div>
+        </section>
+{% endblock %}

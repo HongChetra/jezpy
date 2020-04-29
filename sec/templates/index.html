@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+		<link rel="icon" href="{{url_for('static', filename='img/python.png')}}" type="image/png">
+		
+		{% if title %}
+			<title>JEZA | {{ title }} </title>
+		{% else %}
+			<title>JEZA</title>
+
+		{% endif %}
+        <!-- Bootstrap CSS -->
+        
+        <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.css')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename='vendors/linericon/style.css')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/font-awesome.min.css')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename='vendors/owl-carousel/owl.carousel.min.css')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename='vendors/lightbox/simpleLightbox.css')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename='vendors/nice-select/css/nice-select.css')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename='vendors/animate-css/animate.css')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename='vendors/popup/magnific-popup.css')}}">
+        <!-- main css -->
+        <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/responsive.css') }}">
+    </head>
+    <body>
+        
+        <!--================Header Menu Area =================-->
+        <header class="header_area">
+           
+            <div class="main_menu">
+            	<nav class="navbar navbar-expand-lg navbar-light">
+					<div class="container">
+						<!-- Brand and toggle get grouped for better mobile display -->
+						<a class="navbar-brand logo_h" href="{{url_for('main.home')}}">JEZA</a>
+						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+							<ul class="nav navbar-nav menu_nav ml-auto">
+                                {% if current_user.is_authenticated %}
+                                <li class="nav-item "><a class="nav-link" href="{{url_for('main.all_post')}}">Lesson</a></li>
+                                <li class="nav-item "><a class="nav-link" href="{{url_for('posts.new_post')}}">New</a></li>
+                                <li class="nav-item "><a class="nav-link" href="{{url_for('users.account')}}"> Account </a></li>
+                                <li class="nav-item "><a class="nav-link" href="{{url_for('users.logout')}}"> >Home</a></li>
+                                {% else %}
+								<li class="nav-item active"><a class="nav-link" href="{{url_for('main.home')}}"> Home</a></li>
+								<li class="nav-item "><a class="nav-link" href="{{url_for('main.all_post')}}">Lessons</a></li>
+								<li class="nav-item "><a class="nav-link" href="{{url_for('main.flask')}}"> Flask</a></li>
+								<li class="nav-item "><a class="nav-link" href="{{url_for('main.django')}}"> Django</a></li>
+								<li class="nav-item "><a class="nav-link" href="{{url_for('main.about')}}"> About</a></li>
+                                <li class="nav-item "><a class="nav-link" href="{{url_for('main.contact')}}"> Contact</a></li>
+                                {% endif %}
+							</ul>
+						</div> 
+					</div>
+            	</nav>
+            </div>
+        </header>
+        <!--================Header Menu Area =================-->
+    
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+            {% endwith %}
+    
+        {% block content %}
+		<!--================Home Banner Area =================-->
+		
+        <section class="home_banner_area">
+            <div class="banner_inner d-flex align-items-center">
+            	<div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
+				<div class="container">
+					<div class="banner_content text-center">
+						<h3>Welcome to our website <br> for free lessons in python</h3>
+						<p>We want to see our country grow in number of coders, and expect something big will happen in IT sector in Cambodia</p>
+						<a class="main_btn" href="{{url_for('main.all_post')}}">See Lessons</a>
+					</div>
+				</div>
+            </div>
+        </section>
+        <!--================End Home Banner Area =================-->
+        
+       
+    
+        <!--================Courses Area =================-->
+        <section class="courses_area p_120">
+        	<div class="container">
+        		<div class="main_title">
+        			<h2>We are going to teach you how to code in Python</h2>
+                    <p> Python is an interpreted, high-level, general-purpose programming language. 
+                        Created by Guido van Rossum and first released in 1991, Python's design philosophy 
+                        emphasizes code readability with its notable use of significant whitespace. Its language 
+                        constructs and object-oriented approach aim to help programmers write clear, logical code for
+                         small and large-scale projects.
+
+                        Python is dynamically typed and garbage-collected.
+                         It supports multiple programming paradigms, including structured
+                          (particularly, procedural,) object-oriented, and functional programming. 
+                          Python is often described as a "batteries included" language due to its 
+                          comprehensive standard library.
+                        
+                        Python was conceived in the late 1980s as a successor to the ABC language. 
+                        Python 2.0, released in 2000, introduced features like list comprehensions and 
+                        a garbage collection system capable of collecting reference cycles. Python 3.0, 
+                        released in 2008, was a major revision of the language that is not completely 
+                        backward-compatible, and much Python 2 code does not run unmodified on Python 3.
+                        
+                        The Python 2 language, i.e. Python 2.7.x, was officially discontinued on 1 January 2020 
+                        (first planned for 2015) after which security patches and other improvements will not be 
+                        released for it.[30][31] With Python 2's end-of-life, only Python 3.5.x and later are supported.
+                        
+                        Python interpreters are available for many operating systems. 
+                        A global community of programmers develops and maintains CPython, 
+                        an open source reference implementation. A non-profit organization,
+                        the Python Software Foundation, manages and directs resources for Python and
+                        CPython development.</p>
+                    
+        		</div>
+        	</div>
+        </section>
+        <!--================End Courses Area =================-->
+	
+        {% endblock %}
+        <!--================ start footer Area  =================-->	
+        <footer class="footer-area p_120">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8  col-md-5 col-sm-5">
+                        <div class="single-footer-widget tp_widgets">
+                           <h6 class="footer_title">Top Programming Languages</h6>
+                            <ul class="list">
+                                <li><a >1.Python</a></li>
+                                <li><a >2.C</a></li>
+                            	<li><a >3.Java</a></li>
+                            	<li><a >4.C#</a></li>
+                                <li><a >5.C++</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4  col-md-5 col-sm-5">
+                        <div class="single-footer-widget tp_widgets">
+                           <h6 class="footer_title">Python's Frameworks</h6>
+                            <ul class="list">
+                            	<li><a >1.Django</a></li>
+                            	<li><a >2.Flask</a></li>
+                            	<li><a >3.CherryPy</a></li>
+                                <li><a >4.Pyramid</a></li>
+                                <li><a >5.Web2py</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row footer-bottom d-flex justify-content-between align-items-center">
+                    <p class="col-lg-8 col-md-8 footer-text m-0"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                    
+                    <div class="col-lg-4 col-md-4 footer-social">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-youtube"></i></a>
+                        <a href="#"><i class="fa fa-instagram"></i></a>
+                    </div>
+               
+                </div>
+            </div>
+        </footer>
+		<!--================ End footer Area  =================-->
+        
+        
+        
+        
+        
+        
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="{{url_for('static', filename='js/jquery-3.3.1.min.js')}}"></script>
+        <script src="{{url_for('static', filename='js/popper.js')}}"></script>
+        <script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+        <script src="{{url_for('static', filename='js/stellar.js')}}"></script>
+        <script src="{{url_for('static', filename='vendors/lightbox/simpleLightbox.min.js')}}"></script>
+        <script src="{{url_for('static', filename='vendors/nice-select/js/jquery.nice-select.min.js')}}"></script>
+        <script src="{{url_for('static', filename='vendors/isotope/imagesloaded.pkgd.min.js')}}"></script>
+        <script src="{{url_for('static', filename='vendors/isotope/isotope.pkgd.min.js')}}"></script>
+        <script src="{{url_for('static', filename='vendors/owl-carousel/owl.carousel.min.js')}}"></script>
+        <script src="{{url_for('static', filename='vendors/popup/jquery.magnific-popup.min.js')}}"></script>
+        <script src="{{url_for('static', filename='js/jquery.ajaxchimp.min.js')}}"></script>
+        <script src="{{url_for('static', filename='vendors/counter-up/jquery.waypoints.min.js')}}"></script>
+        <script src="{{url_for('static', filename='vendors/counter-up/jquery.counterup.js')}}"></script>
+        <script src="{{url_for('static', filename='js/mail-script.js')}}"></script>
+        <script src="{{url_for('static', filename='js/theme.js')}}"></script>
+        <script src="//cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
+	    <script type="text/javascript">
+		CKEDITOR.replace('editor')
+        /*; 
+        $ (function () {
+            $ ("#title") .hide();
+            $ ("#photo") .hide();
+            $ ('#video') .hide();
+            $ ('#author') .hide();
+
+            $ ("#Post").on ("change", function () {
+                switch ($(this). val()) {
+                    case "title":
+                    $ ("#title") .show ();
+                    $ ("#photo") .hide ();
+                    $ ("#video") .hide ();
+                    $ ("#author") .hide ();
+                    break;
+                    case "photo":
+                    $ ("#title") .hide ();
+                    $ ("#image") .show ();
+                    $ ("#video") .hide ();
+                    $ ("#author") .hide ();
+                    break; 
+                    case "content":
+                    $ ("#content") .show ();
+                    $ ("#photo") .hide ();
+                    $ ("#video") .show ();
+                    $ ("#author") .hide ();
+                    break; 
+                    case "quote":
+                    $ ("#text_group") .show ();
+                    $ ("#image_group") .hide ();
+                    $ ("#video_group") .hide ();
+                    $ ("#author_group") .show ();
+                    break; 
+                }
+
+            });   
+        })*/
+	</script>
+    </body>
+</html>

@@ -1,0 +1,43 @@
+{% extends 'index.html' %}
+
+{% block content %}
+	<section class="banner_area">
+            <div class="banner_inner d-flex align-items-center">
+            	<div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
+				<div class="container">
+					<div class="banner_content text-center">
+						<h2>Django</h2>
+						<div class="page_link">
+							<a href="{{url_for('main.home')}}">Home</a>
+							<a href="{{url_for('main.django')}}">Django</a>
+						</div>
+					</div>
+				</div>
+            </div>
+        </section>
+         <section class="about_area p_120">
+        	<div class="container">
+        		<div class="main_title">
+        			<h2>Python Full-Stack Framework</h2>
+        			<p>Harder to learn but more effective in the way of coding</p>
+        		</div>
+        		<div class="about_details">
+        			<p>Django is a Python-based free and 
+						open-source web framework, which follows the model-template-view (MTV) architectural 
+						pattern. It is maintained by the Django Software Foundation (DSF), an independent 
+						organization established as a 501(c)(3) non-profit organization.
+
+						Django's primary goal is to ease the creation of complex, database-driven websites. 
+						The framework emphasizes reusability and "pluggability" of components, less code, low coupling, 
+						rapid development, and the principle of don't repeat yourself. Python is used throughout, even 
+						for settings files and data models. Django also provides an optional administrative create, read,
+						 update and delete interface that is generated dynamically through introspection and configured via
+						  admin models.
+						
+						Some well-known sites that use Django include the Public Broadcasting Service, 
+						Instagram, Mozilla, The Washington Times, Disqus, Bitbucket, and Nextdoor. 
+						It was used on Pinterest, but later the site moved to a framework built over <a href="{{url_for('main.flask')}}">Flask.</a></p>
+        		</div>
+        	</div>
+        </section>
+{% endblock %}

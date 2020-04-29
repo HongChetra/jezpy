@@ -1,0 +1,65 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<section class="banner_area">
+    <div class="banner_inner d-flex align-items-center">
+        <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
+        <div class="container">
+            <div class="banner_content text-center">
+                <h2>Lesson</h2>
+                <div class="page_link">
+                    <a href="{{url_for('main.home')}}">Home</a>
+                    <a href="{{url_for('main.all_post')}}">Lesson</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="content">
+    <h1 class="badge badge-light"> Totall's posts  ({{ posts.total }})</h1>
+</div>
+{% for post in posts.items %}
+    <div class="content">
+      
+        <article class="media content-section"> 
+            <div class="media-body">
+                <div class="article-metadat">
+                    <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}">
+                    <a class="mr-2" href="{{ url_for('users.user_posts', username=post.author.username) }}"> {{ post.author.username }} </a>
+                    <small class="text-muted">{{post.date_posted.strftime('%d/%m/%Y')}}</small>
+                </div>
+                <div>
+                <h2><a class="article-title" href="{{url_for('posts.show_post', post_id=post.id)}}">{{ post.title }}</a></h2>
+                <p class="article-content"> {{ post.content|safe|truncate(530,True)}}
+                    <a href="{{url_for('posts.show_post', post_id=post.id)}}"> Read More</a>
+                </p>
+            </div>
+            </div>
+            
+        </article>
+        </div>
+   
+        {% endfor %}
+
+      
+        <div class="content">
+            {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+
+                {% if page_num %}
+                    {% if posts.page == page_num %}
+                        <a class="btn btn-dark mb-4 " href="{{ url_for('main.all_post', page=page_num) }}">{{ page_num }}</a>
+
+                    {% else %}
+                        <a class="btn btn-outline-dark mb-4" href="{{ url_for('main.all_post', page=page_num) }}">{{ page_num }}</a>
+                    {% endif %}
+
+                    {% else %}
+                    ...
+                {% endif %}
+
+            {% endfor %}
+        </div>
+    <br> <br>
+        
+{% endblock %}
